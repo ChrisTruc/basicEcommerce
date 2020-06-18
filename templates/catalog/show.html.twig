@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiche Produit{% endblock %}
+
+{% block body %}
+<div class="container pt-5">
+    <div class="row">
+        <div class="col-md-12" align="center">
+            <div class="col-item">
+                <div class="photo">
+                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+                </div>
+                <div>
+                    <div>
+                        <h5><b>{{ product.name }}</b></h5>
+                        <h5>{{ product.description }}</h5>
+                        <h5>{{ product.price }} &euro;</h5>
+                    </div>
+                    </div>
+                    <div class="separator clear-left">
+                        <button type="button" class="btn btn-success">Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

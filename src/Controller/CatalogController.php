@@ -25,4 +25,18 @@ class CatalogController extends AbstractController
             'products' => $products,
         ]);
     }
+
+    /**
+     * @Route("/show/{id}", name="show", requirements={"id"="\d+"})
+     */
+    public function show(int $id) : Response
+    {
+        $product = $this->getDoctrine()
+                        ->getRepository(Product::class)
+                        ->find($id);        
+
+        return $this->render('catalog/show.html.twig', [
+            'product' => $product,
+        ]);
+    }
 }
