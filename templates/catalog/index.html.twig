@@ -1,20 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CatalogController!{% endblock %}
+{% block title %}Homepage{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Programmation/project/basicECommerce/src/Controller/CatalogController.php'|file_link(0) }}">src/Controller/CatalogController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Programmation/project/basicECommerce/templates/catalog/index.html.twig'|file_link(0) }}">templates/catalog/index.html.twig</a></code></li>
-    </ul>
-</div>
+<main role="main">
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                {% for product in products %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <p class="card-text"><b>{{ product.name }}</b></p>
+                            <p class="card-text">{{ product.description }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Voir le produit</button>
+                                </div>
+                                <small class="text-muted">{{ product.price }} &euro;</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
 {% endblock %}
