@@ -5,3 +5,7 @@ home:
 show:
   path: /show/{id}
   controller: App\Controller\CatalogController::show
+
+listProducts:
+  path: /list
+  controller: App\Controller\CartController::listProducts

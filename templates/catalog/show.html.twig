@@ -15,10 +15,17 @@
                     <h5>{{ product.description }}</h5>
                     <h5>{{ product.price }} &euro;</h5>
                 </div>
+                {{ form_start(form) }}
+                <div>
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="btn-danger">-</button>
+                    {{ form_row(form.quantity) }}
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="btn-success">+</button>
+                </div>
                 </div>
                 <div class="separator clear-left">
-                    <button type="button" class="btn btn-success">Ajouter au panier</button>
+                    {{ form_row(form.addCart) }}
                 </div>
+                {{ form_end(form) }}
             </div>
         </div>
     </div>
