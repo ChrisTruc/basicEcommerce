@@ -18,26 +18,27 @@ class CartService {
         else {
             $this->session = $request->getSession();
         }
-        $this->initCart();
-    }
-
-    public function initCart() {
-        $this->session->set('cart', array());
+        if(empty($this->getCart())) {
+            $this->setCart(array());
+        }
     }
 
     public function addToCart(int $id, int $quantity) {
-        $cart = $this->session->get('cart');
+        $cart = $this->getCart();
         if(!array_key_exists($id,$cart)) {
             $cart[$id] = $quantity;
         } else {
             $cart[$id]+=$quantity;
         }
-        $this->session->set('cart', $cart);
+        $this->setCart($cart);
     }
 
-    public function showCart() {
+    public function getCart() {
         return $this->session->get('cart');
     }
 
+    public function setCart($cart) {
+        $this->session->set('cart',$cart);
+    }
 }
 ?>

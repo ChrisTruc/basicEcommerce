@@ -17,14 +17,15 @@ class CartController extends AbstractController
      */
     public function listProducts(CartService $cartService)
     {
-        $cart = $cartService->showCart();
+        $cart = $cartService->getCart();
 
         $products = $this->getDoctrine()
                          ->getRepository(Product::class)
                          ->findById(array_keys($cart));
 
         return $this->render('cart/list-products.html.twig', [
-            'controller_name' => 'CartController',
+            'productsCart' => $products,
+            'cart' => $cart
         ]);
     }
 }

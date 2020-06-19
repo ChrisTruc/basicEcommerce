@@ -9,63 +9,40 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Product</th>
-                        <th>Quantity</th>
-                        <th class="text-center">Price</th>
-                        <th class="text-center">Total</th>
-                        <th> </th>
+                        <th>Produit</th>
+                        <th>Prix unitaire</th>
+                        <th>Quantité</th>
+                        <th class="text-center">Prix</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% set total = 0 %}
+                    {% for productCart in productsCart %}
                     <tr>
-                        <td class="col-sm-8 col-md-6">
+                        <td class="col-sm-7 col-md-5">
                         <div class="media">
                             <div class="media-body">
-                                <h4 class="media-heading"><a href="#">Product name</a></h4>
+                                <h4 class="media-heading"><a href="#">{{ productCart.name }}</a></h4>
                             </div>
                         </div></td>
-                        <td class="col-sm-1 col-md-1" style="text-align: center">
-                        <input type="email" class="form-control" id="exampleInputEmail1" value="3">
-                        </td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>$4.87</strong></td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>$14.61</strong></td>
-                        <td class="col-sm-1 col-md-1">
-                        <button type="button" class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove"></span> Remove
-                        </button></td>
+                        <td class="col-sm-2 col-md-2">{{ productCart.price }} &euro;</td>
+                        <td class="col-sm-1 col-md-1 text-center">{{ cart[productCart.id] }}</td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong>{{ productCart.price * cart[productCart.id] }} &euro;</strong></td>
                     </tr>
+                    {% set total = total + productCart.price %}
+                    {% endfor %}
                     <tr>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
-                        <td><h5>Subtotal</h5></td>
-                        <td class="text-right"><h5><strong>$24.59</strong></h5></td>
-                    </tr>
-                    <tr>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
-                        <td><h5>Estimated shipping</h5></td>
-                        <td class="text-right"><h5><strong>$6.94</strong></h5></td>
-                    </tr>
-                    <tr>
-                        <td>   </td>
                         <td>   </td>
                         <td>   </td>
                         <td><h3>Total</h3></td>
-                        <td class="text-right"><h3><strong>$31.53</strong></h3></td>
+                        <td class="text-right"><h3><strong>{{ total }} &euro;</strong></h3></td>
                     </tr>
                     <tr>
                         <td>   </td>
                         <td>   </td>
                         <td>   </td>
-                        <td>
-                        <button type="button" class="btn btn-default">
-                            <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-                        </button></td>
-                        <td>
-                        <button type="button" class="btn btn-success">
-                            Checkout <span class="glyphicon glyphicon-play"></span>
+                        <td><button type="button" class="btn btn-danger">
+                            Vider le panier <span class="glyphicon glyphicon-play"></span>
                         </button></td>
                     </tr>
                 </tbody>

@@ -43,7 +43,6 @@ class CatalogController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $item = $form->getData();
-            
             $cartService->addToCart($id, $item['quantity']);
         }
 
