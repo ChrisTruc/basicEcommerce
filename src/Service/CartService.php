@@ -39,6 +39,6 @@ class CartService {
 
     public function setCart($cart) {
         $this->session->set('cart',$cart);
-    }
+    }    
 }
 ?>

@@ -17,9 +17,9 @@
                 </div>
                 {{ form_start(form) }}
                 <div>
-                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="btn-danger">-</button>
+                    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown(); console.log('blabla');" class="btn-danger">-</button>
                     {{ form_row(form.quantity) }}
-                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="btn-success">+</button>
+                    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="btn-success">+</button>
                 </div>
                 </div>
                 <div class="separator clear-left">

@@ -16,8 +16,7 @@
                             <strong>Catalogue</strong>
                         </a>
                         <div>
-                            0
-                            <a href="{{ path('listProducts') }}" class="btn btn-primary">Panier</a>
+                            <a href="{{ path('listProducts') }}" class="btn btn-primary">Panier <span class="badge badge-light">{{ cart_service.getCart()|length }}</span></a>
                         </div>
                     </div>
                 </div>
