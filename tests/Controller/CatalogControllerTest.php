@@ -5,8 +5,6 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class CatalogControllerTest extends WebTestCase
 {
-    private const NB_PRODUCT = 12;
-
     public function testHomepageOK()
     {
         $client = static::createClient();
