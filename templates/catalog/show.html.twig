@@ -16,14 +16,14 @@
                     <h5>{{ product.price }} &euro;</h5>
                 </div>
                 {{ form_start(form) }}
-                <div>
-                    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepDown(); console.log('blabla');" class="btn-danger">-</button>
-                    {{ form_row(form.quantity) }}
-                    <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="btn-success">+</button>
+                <div class="form-group row justify-content-center">
+                    <div class="col-md-2">
+                    {{ form_widget(form.quantity, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
                 </div>
                 </div>
                 <div class="separator clear-left">
-                    {{ form_row(form.addCart) }}
+                    {{ form_widget(form.addCart, { 'attr': {'class': 'btn btn-success'}}) }}
                 </div>
                 {{ form_end(form) }}
             </div>

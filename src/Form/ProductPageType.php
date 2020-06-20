@@ -14,7 +14,9 @@ class ProductPageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('quantity', IntegerType::class, 
-                        array('label' => false, 'data' => '0'))
+                        array('label' => false, 
+                            'data' => '1',
+                            'attr' => array('min' => 1)))
                 ->add('addCart', SubmitType::class, array('label' => 'Ajouter au panier'));
     }
 
