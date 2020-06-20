@@ -28,4 +28,14 @@ class CartController extends AbstractController
             'cart' => $cart
         ]);
     }
+
+    /**
+     * @Route("/deleteSession", name="deleteSession")
+     */
+    public function deleteSession(CartService $cartService)
+    {
+        $cartService->setCart(array());
+
+        return $this->redirectToRoute('listProducts');
+    }
 }

@@ -9,3 +9,7 @@ show:
 listProducts:
   path: /list
   controller: App\Controller\CartController::listProducts
+
+deleteSession:
+  path: /deleteSession
+  controller: App\Controller\CartController::deleteSession

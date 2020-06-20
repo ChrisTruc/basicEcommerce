@@ -6,6 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-10 col-md-offset-1">
+            {% if productsCart|length != 0 %}
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -29,7 +30,7 @@
                         <td class="col-sm-1 col-md-1 text-center">{{ cart[productCart.id] }}</td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>{{ productCart.price * cart[productCart.id] }} &euro;</strong></td>
                     </tr>
-                    {% set total = total + productCart.price %}
+                    {% set total = total + (productCart.price * cart[productCart.id]) %}
                     {% endfor %}
                     <tr>
                         <td>   </td>
@@ -41,12 +42,15 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><a class="btn btn-danger" type="button">
+                        <td><a class="btn btn-danger" type="button" href="{{ path('deleteSession') }}">
                             Vider le panier <span class="glyphicon glyphicon-play"></span>
                         </a></td>
                     </tr>
                 </tbody>
             </table>
+            {% else %}
+                <h1 align="center">Votre panier est vide</h1>
+            {% endif %}
         </div>
     </div>
 </div>
