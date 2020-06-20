@@ -11,15 +11,17 @@ class CartService {
 
     public function __construct(RequestStack $requestStack) {
         $request = $requestStack->getCurrentRequest();
-        if(!$request->hasSession()) {
-            $this->session = new Session();
-            $this->session->start();
-        }
-        else {
-            $this->session = $request->getSession();
-        }
-        if(empty($this->getCart())) {
-            $this->setCart(array());
+        if(isset($request)) {
+            if(!$request->hasSession()) {
+                $this->session = new Session();
+                $this->session->start();
+            }
+            else {
+                $this->session = $request->getSession();
+            }
+            if(empty($this->getCart())) {
+                $this->setCart(array());
+            }
         }
     }
 
