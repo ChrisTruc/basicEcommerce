@@ -6,8 +6,8 @@
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row">
-            {% for product in products %}
-            <div class="col-md-4">
+            {% for key,product in products %}
+            <div class="col-md-4" id="product-{{ key}}">
                 <div class="card mb-4 shadow-sm">
                     <div class="card-body">
                         <p class="card-text"><b>{{ product.name }}</b></p>

@@ -5,6 +5,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class CatalogControllerTest extends WebTestCase
 {
+    private const NB_PRODUCT = 12;
+
     public function testHomepageOK()
     {
         $client = static::createClient();
@@ -12,6 +14,18 @@ class CatalogControllerTest extends WebTestCase
         $client->request('GET', '/');
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
+
+    public function testNumberProductOK()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/');
+
+        $nbDivProduct = $crawler->filter('div[id^="product-"]')->count();
+
+        $this->assertNotSame(11, $nbDivProduct);
+        $this->assertSame(12, $nbDivProduct);
     }
 }
 ?>
