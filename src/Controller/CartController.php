@@ -6,9 +6,11 @@ use App\Entity\Product;
 
 use App\Service\CartService;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CartController extends AbstractController
 {
@@ -35,6 +37,28 @@ class CartController extends AbstractController
     public function deleteSession(CartService $cartService)
     {
         $cartService->setCart(array());
+
+        return $this->redirectToRoute('listProducts');
+    }
+
+    /**
+     * @Route("/calculPrice/{typeCalculPrice}", name="calculPrice")
+     */
+    public function calculPrice(CartService $cartService, Request $request)
+    {
+        if ($request->isXmlHttpRequest()) {
+            $typePrice = $request->get('typeCalculPrice');
+
+            $products = $this->getDoctrine()
+                         ->getRepository(Product::class)
+                         ->findById(array_keys($cartService->getCart()));
+
+            if ($typePrice == "TOTAL") {
+                $price = $cartService->getTotalCart($products);
+            }
+
+            return new JsonResponse($price);
+        }
 
         return $this->redirectToRoute('listProducts');
     }

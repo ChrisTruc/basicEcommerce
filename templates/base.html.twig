@@ -25,6 +25,7 @@
         {% block body %}{% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            {% block javascript_add %}{% endblock %}
         {% endblock %}
     </body>
 </html>

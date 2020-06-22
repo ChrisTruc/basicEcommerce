@@ -17,7 +17,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% set total = 0 %}
                     {% for productCart in productsCart %}
                     <tr>
                         <td class="col-sm-7 col-md-5">
@@ -30,13 +29,12 @@
                         <td class="col-sm-1 col-md-1 text-center">{{ cart[productCart.id] }}</td>
                         <td class="col-sm-1 col-md-1 text-center"><strong>{{ productCart.price * cart[productCart.id] }} &euro;</strong></td>
                     </tr>
-                    {% set total = total + (productCart.price * cart[productCart.id]) %}
                     {% endfor %}
                     <tr>
                         <td></td>
                         <td></td>
                         <td><h3>Total</h3></td>
-                        <td class="text-right"><h3><strong>{{ total }} &euro;</strong></h3></td>
+                        <td class="text-right" id="total" data-path="{{path('calculPrice', { 'typeCalculPrice': 'TOTAL' })}}"></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -54,4 +52,7 @@
         </div>
     </div>
 </div>
+{% endblock %}
+{% block javascript_add %}
+    {{ encore_entry_script_tags('cart') }}
 {% endblock %}

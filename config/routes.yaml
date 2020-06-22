@@ -13,3 +13,7 @@ listProducts:
 deleteSession:
   path: /deleteSession
   controller: App\Controller\CartController::deleteSession
+
+calculPrice:
+  path: /calculPrice/{typeCalculPrice}
+  controller: App\Controller\CartController::calculPrice

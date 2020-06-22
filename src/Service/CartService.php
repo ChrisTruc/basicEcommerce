@@ -4,6 +4,7 @@ namespace App\Service;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Doctrine\ORM\EntityManagerInterface;
 
 class CartService {
 
@@ -41,6 +42,17 @@ class CartService {
 
     public function setCart($cart) {
         $this->session->set('cart',$cart);
-    }    
+    }
+
+    public function getTotalCart($products = array()) {
+        $cart = $this->getCart();
+
+        $amount = 0;
+        foreach ($products as $product) {
+            $amount += $product->getPrice() * $cart[$product->getId()];
+        }
+
+        return $amount;
+    }
 }
 ?>
