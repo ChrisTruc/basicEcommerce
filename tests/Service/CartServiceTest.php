@@ -24,8 +24,9 @@ class CartServiceTest extends KernelTestCase
     }
 
 
-    public function initProduct($name,$description,$price) {
+    public function initProduct($id,$name,$description,$price) {
         $product = new Product();
+        $product->setId($id);
         $product->setName($name);
         $product->setDescription($description);
         $product->setPrice($price);
@@ -48,9 +49,9 @@ class CartServiceTest extends KernelTestCase
     public function testGetAmountTotalCart()
     {
         $products = array();
-        $products[0] = self::initProduct("Product 0","Description 0",15);
-        $products[1] = self::initProduct("Product 1","Description 1",17);
-        $products[2] = self::initProduct("Product 2","Description 2",4);
+        $products[0] = self::initProduct(0,"Product 0","Description 0",15);
+        $products[1] = self::initProduct(1,"Product 1","Description 1",17);
+        $products[2] = self::initProduct(2,"Product 2","Description 2",4);
 
         $this->cartService->setCart(array());
         $this->cartService->addToCart(0,10);

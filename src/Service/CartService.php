@@ -54,10 +54,10 @@ class CartService {
 
     public function getAmountTotalCart($products = array()) {
         $cart = $this->getCart();
-
+        
         $amount = 0;
-        foreach ($products as $key => $product) {
-            $amount += $product->getPrice() * $cart[$key];
+        foreach ($products as $product) {
+            $amount += $product->getPrice() * $cart[$product->getId()];
         }
 
         return $amount;
