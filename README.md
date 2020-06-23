@@ -28,8 +28,9 @@ yarn encore dev
 
 ### Ajouter des données Produit dans l'application
 
-Lancer la commande :
+Lancer les trois commandes :
 ```bash
+php bin/console make:migration
 php bin/console doctrine:migrations:migrate
 php bin/console doctrine:fixtures:load
 ```
