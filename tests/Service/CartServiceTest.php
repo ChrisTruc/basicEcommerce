@@ -1,5 +1,5 @@
 <?php
-namespace App\Tests\Util;
+namespace App\Tests\Service;
 
 use App\Entity\Product;
 use App\Service\CartService;
