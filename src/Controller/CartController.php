@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Product;
-
 use App\Service\CartService;
 
 use Doctrine\ORM\EntityManagerInterface;
@@ -54,7 +53,7 @@ class CartController extends AbstractController
                          ->findById(array_keys($cartService->getCart()));
 
             if ($typePrice == "TOTAL") {
-                $price = $cartService->getTotalCart($products);
+                $price = $cartService->getAmountTotalCart($products);
             }
 
             return new JsonResponse($price);

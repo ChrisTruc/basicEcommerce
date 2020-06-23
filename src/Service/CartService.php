@@ -26,6 +26,14 @@ class CartService {
         }
     }
 
+    public function setSession(Session $session) {
+        $this->session = $session;
+    }
+
+    public function getSession() {
+        return $this->session;
+    }
+
     public function addToCart(int $id, int $quantity) {
         $cart = $this->getCart();
         if(!array_key_exists($id,$cart)) {
@@ -44,12 +52,12 @@ class CartService {
         $this->session->set('cart',$cart);
     }
 
-    public function getTotalCart($products = array()) {
+    public function getAmountTotalCart($products = array()) {
         $cart = $this->getCart();
 
         $amount = 0;
-        foreach ($products as $product) {
-            $amount += $product->getPrice() * $cart[$product->getId()];
+        foreach ($products as $key => $product) {
+            $amount += $product->getPrice() * $cart[$key];
         }
 
         return $amount;
