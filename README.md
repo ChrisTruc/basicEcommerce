@@ -20,9 +20,10 @@ composer install
 
 ### Compiler les assets
 
-Lancer la commande :
+Lancer les deux commandes :
 ```bash
-npm run dev
+yarn
+yarn encore dev
 ```
 
 ### Ajouter des données Produit dans l'application
