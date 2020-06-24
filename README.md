@@ -7,9 +7,16 @@ BasicEcommerce est une application basique de e-commerce
 ### Prérequis
 
 - Avoir PHP installé (version >= 7.3.18) 
-- Avoir composer installé 
 - Avoir webpack et npm installé
 - Avoir récupérer le projet sur Git
+```bash
+git clone https://github.com/ChrisTruc/basicEcommerce.git
+```
+- Avoir composer installé dans votre projet
+- Se placer dans le répertoire du projet 
+```bash
+cd basicECommerce
+```
 
 ### Installer les dépendances
 
@@ -47,5 +54,5 @@ php -S 127.0.0.1:8001 -t public
 
 Lancer la commande :
 ```bash
-php bin/phpunit
+./vendor/bin/simple-phpunit
 ```
