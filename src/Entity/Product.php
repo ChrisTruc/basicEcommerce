@@ -120,4 +120,5 @@ class Product
             $this->advices->add($advice);
         }
     }
+
 }
