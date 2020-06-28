@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add product{% endblock %}
+
+{% block body %}
+    {{ form_start(form, {'attr' : {'class' : 'col-md-4 offset-md-4'}}) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.price) }}
+        {{ form_row(form.typeProduct) }}
+
+        {{ form_row(form.save) }}
+    {{ form_end(form) }}
+{% endblock %}
