@@ -26,8 +26,15 @@
                             </div>
                         </div></td>
                         <td class="col-sm-2 col-md-2">{{ productCart.price }} &euro;</td>
-                        <td class="col-sm-1 col-md-1 text-center">{{ cart[productCart.id] }}</td>
-                        <td class="col-sm-1 col-md-1 text-center"><strong>{{ productCart.price * cart[productCart.id] }} &euro;</strong></td>
+                        <td class="col-sm-1 col-md-1 text-center">
+                            <input class="form-control" 
+                                type="number" 
+                                value="{{ cart[productCart.id] }}" 
+                                id="quantity_{{ productCart.id }}" 
+                                name="quantity" 
+                                data-path="{{ path('changeQuantity', { 'idProduct' : productCart.id }) }}">
+                        </td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong id="price_{{ productCart.id }}">{{ productCart.price * cart[productCart.id] }} &euro;</strong></td>
                     </tr>
                     {% endfor %}
                     <tr>

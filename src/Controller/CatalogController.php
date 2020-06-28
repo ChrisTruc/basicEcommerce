@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Form\ProductType;
 use App\Form\ProductPageType;
 
 use App\Service\CartService;
@@ -49,6 +50,31 @@ class CatalogController extends AbstractController
         return $this->render('catalog/show.html.twig', [
             'product' => $product,
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/add", name="add")
+     */
+    public function add(Request $request) : Response
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $product = new Product();
+
+        $form = $this->createForm(ProductType::class, $product);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $product = $form->getData();
+
+            $em->persist($product);
+
+            $em->flush();
+        }
+
+        return $this->render('catalog/add.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }

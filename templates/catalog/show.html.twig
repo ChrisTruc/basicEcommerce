@@ -13,7 +13,8 @@
                 <div>
                     <h5><b>{{ product.name }}</b></h5>
                     <h5>{{ product.description }}</h5>
-                    <h5>{{ product.price }} &euro;</h5>
+                    <h5><b>Prix</b> : {{ product.price }} &euro;</h5>
+                    <h5><b>Type</b> : {{ product.typeProduct }}</h5>
                 </div>
                 {{ form_start(form) }}
                 <div class="form-group row justify-content-center">

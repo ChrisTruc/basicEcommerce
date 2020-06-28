@@ -61,4 +61,25 @@ class CartController extends AbstractController
 
         return $this->redirectToRoute('listProducts');
     }
+
+    /**
+     * @Route("/changeQuantity", name="changeQuantity")
+     */
+    public function changeQuantity(CartService $cartService, Request $request)
+    {
+        if ($request->isXmlHttpRequest()) {
+
+            $products = $this->getDoctrine()
+                         ->getRepository(Product::class)
+                         ->findById(array_keys($cartService->getCart()));
+
+            if ($typePrice == "TOTAL") {
+                $price = $cartService->getAmountTotalCart($products);
+            }
+
+            return new JsonResponse($price);
+        }
+
+        return $this->redirectToRoute('listProducts');
+    }
 }
