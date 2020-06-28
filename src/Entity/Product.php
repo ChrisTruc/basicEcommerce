@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,16 @@ class Product
      * @ORM\ManyToOne(targetEntity="App\Entity\TypeProduct", inversedBy="type")
      */
     private $typeProduct;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Advice", mappedBy="product", cascade={"persist"})
+     */
+    private $advices;
+
+    public function __construct()
+    {
+        $this->advices = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -95,5 +107,17 @@ class Product
         $this->typeProduct = $typeProduct;
 
         return $this;
+    }
+
+    public function getAdvices(): ?Collection
+    {
+        return $this->advices;
+    }
+
+    public function addAdvice(Advice $advice): void
+    {
+        if (!$this->advices->contains($advice)) {
+            $this->advices->add($advice);
+        }
     }
 }
